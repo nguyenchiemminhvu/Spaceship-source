@@ -6,5 +6,6 @@
         <file>images/boss1.png</file>
         <file>images/missle.jpg</file>
         <file>images/youngbuffalo.jpg</file>
+        <file>images/EMP.jpg</file>
     </qresource>
 </RCC>

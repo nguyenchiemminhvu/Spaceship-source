@@ -83,7 +83,6 @@ void CountEMP::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->setPen(Qt::yellow);
     painter->setFont(QFont("Time New Roman",15,-1,true));
     painter->drawText(boundingRect(),QString("EMP: ") + QString::number(num_of_EMP));
-    painter->drawRect(boundingRect());
 }
 
 int CountEMP::getNumOfEMP()
