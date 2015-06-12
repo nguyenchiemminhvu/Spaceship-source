@@ -54,12 +54,12 @@ void EMP::increaseRadius()
 }
 
 
-CountEMP::CountEMP(int num, QGraphicsItem *parent)
-    : QGraphicsRectItem(parent)
+CountEMP::CountEMP(QGraphicsItem *parent)
+    : QGraphicsTextItem(parent)
 {
-    num_of_EMP = num;
+    num_of_EMP = 3;
 
-    timer = new QTimer(this);
+    timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(increaseEMP()));
 
     timer->start(20000);
@@ -80,8 +80,10 @@ void CountEMP::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
-    painter->setPen(QPen(Qt::yellow,2));
-    painter->drawText(boundingRect(),QString("EMP: " + num_of_EMP));
+    painter->setPen(Qt::yellow);
+    painter->setFont(QFont("Time New Roman",15,-1,true));
+    painter->drawText(boundingRect(),QString("EMP: ") + QString::number(num_of_EMP));
+    painter->drawRect(boundingRect());
 }
 
 int CountEMP::getNumOfEMP()

@@ -6,10 +6,10 @@ Player::Player(QGraphicsItem* parent)
     //initialize
     setRect(0,0,50,50);
     score = new Score();
+    emp = new CountEMP();
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(shoot()));
 
-    num_of_EMP = 3;
     isPaused = false;
 }
 
@@ -21,6 +21,11 @@ Player::~Player()
 void Player::addScoreToScene()
 {
     scene()->addItem(score);
+}
+
+void Player::addCounterEMP()
+{
+    scene()->addItem(emp);
 }
 
 QRectF Player::boundingRect() const
@@ -71,12 +76,12 @@ void Player::shoot()
 
 void Player::toggleEMP()
 {
-    if(num_of_EMP > 0)  {
+    if(emp->getNumOfEMP() > 0)  {
 
-        EMP* emp = new EMP(QPointF(pos().x() + 25, pos().y() + 25));
-        connect(emp,SIGNAL(killAnEnemy()),this,SLOT(killAnEnemy()));
-        scene()->addItem(emp);
-        num_of_EMP--;
+        EMP* new_emp = new EMP(QPointF(pos().x() + 25, pos().y() + 25));
+        connect(new_emp,SIGNAL(killAnEnemy()),this,SLOT(killAnEnemy()));
+        scene()->addItem(new_emp);
+        emp->decreaseEMP();
     }
 }
 

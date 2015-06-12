@@ -90,6 +90,7 @@ void MainWindow::addPlayerToScene()
     //add the item to the scene
     scene->addItem(player);
     player->addScoreToScene();
+    player->addCounterEMP();
 }
 
 void MainWindow::setUpView()

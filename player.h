@@ -24,6 +24,7 @@ public:
 
     void addScoreToScene();
     void addHealthToScene();
+    void addCounterEMP();
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -49,7 +50,7 @@ private:
     Score* score;
     QTimer* timer;
 
-    int num_of_EMP;
+    CountEMP* emp;
     bool isPaused;
 };
 

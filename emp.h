@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsItem>
 #include <QGraphicsEllipseItem>
+#include <QGraphicsTextItem>
 #include <QTimer>
 #include <QPainter>
 #include "enemy.h"
@@ -32,13 +33,16 @@ private:
     QTimer* timer;
 };
 
-class CountEMP : public QObject, public QGraphicsRectItem
+class CountEMP : public QGraphicsTextItem
 {
 
     Q_OBJECT
 public:
-    explicit CountEMP(int num = 3,QGraphicsItem* parent = 0);
+    explicit CountEMP(QGraphicsItem* parent = 0);
     ~CountEMP();
+
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     int getNumOfEMP();
     void setNumOfEMP(int num = 3);
@@ -46,9 +50,13 @@ public:
 signals:
 
 public slots:
+    void increaseEMP();
+    void decreaseEMP();
 
 private:
     int num_of_EMP;
+
+    QTimer* timer;
 };
 
 #endif // EMP_H
