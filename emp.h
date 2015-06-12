@@ -14,7 +14,7 @@ class EMP : public QObject, public QGraphicsEllipseItem
 
     Q_OBJECT
 public:
-    EMP(QPointF center, qreal radius = 25, QGraphicsItem* parent = 0);
+    explicit EMP(QPointF center, qreal radius = 25, QGraphicsItem* parent = 0);
     ~EMP();
 
     QRectF boundingRect() const;
@@ -30,6 +30,25 @@ private:
     QPointF center;
     qreal radius;
     QTimer* timer;
+};
+
+class CountEMP : public QObject, public QGraphicsRectItem
+{
+
+    Q_OBJECT
+public:
+    explicit CountEMP(int num = 3,QGraphicsItem* parent = 0);
+    ~CountEMP();
+
+    int getNumOfEMP();
+    void setNumOfEMP(int num = 3);
+
+signals:
+
+public slots:
+
+private:
+    int num_of_EMP;
 };
 
 #endif // EMP_H

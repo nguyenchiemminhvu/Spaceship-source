@@ -52,3 +52,60 @@ void EMP::increaseRadius()
 
     update();
 }
+
+
+CountEMP::CountEMP(int num, QGraphicsItem *parent)
+    : QGraphicsRectItem(parent)
+{
+    num_of_EMP = num;
+
+    timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(increaseEMP()));
+
+    timer->start(20000);
+}
+
+CountEMP::~CountEMP()
+{
+    this->deleteLater();
+}
+
+QRectF CountEMP::boundingRect() const
+{
+    return QRectF(QPointF(400,0),QSize(100,21));
+}
+
+void CountEMP::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+
+    painter->setPen(QPen(Qt::yellow,2));
+    painter->drawText(boundingRect(),QString("EMP: " + num_of_EMP));
+}
+
+int CountEMP::getNumOfEMP()
+{
+    return num_of_EMP;
+}
+
+void CountEMP::setNumOfEMP(int num)
+{
+    num_of_EMP = num;
+}
+
+void CountEMP::increaseEMP()
+{
+    if(num_of_EMP < 3)
+        num_of_EMP++;
+    update();
+}
+
+void CountEMP::decreaseEMP()
+{
+    if(num_of_EMP > 0)
+        num_of_EMP--;
+    update();
+}
+
+
