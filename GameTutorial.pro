@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     score.cpp \
     graphicsscene.cpp \
     health.cpp \
-    emp.cpp
+    emp.cpp \
+    sourceenemy.cpp
 
 HEADERS  += mainwindow.h \
     bullet.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     score.h \
     graphicsscene.h \
     health.h \
-    emp.h
+    emp.h \
+    sourceenemy.h
 
 FORMS    += mainwindow.ui
 

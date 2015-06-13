@@ -12,6 +12,7 @@
 #include "graphicsscene.h"
 #include "player.h"
 #include "bullet.h"
+#include "sourceenemy.h"
 
 namespace Ui {
 class MainWindow;
@@ -40,6 +41,7 @@ private:
     QTimer* timer;
     GraphicsScene* scene;
     Player* player;
+    SourceEnemy* source_of_enemy;
 
     bool gamePause;
 
@@ -49,6 +51,7 @@ private:
     void setUpView();
     void setUpTimer();
     void setUpGame();
+    void setUpSourceOfEnemy();
 };
 
 #endif // MAINWINDOW_H

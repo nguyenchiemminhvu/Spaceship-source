@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //a few utility function using for initialize the game
     setUpScene();
     setUpPlayer();
+    setUpSourceOfEnemy();
     addPlayerToScene();
     setUpView();
     setUpTimer();
@@ -31,7 +32,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         this->close();
         break;
 
-    //Press P or Space to pause the game
+    //Press P or Space bar to pause the game
     case Qt::Key_P:
     case Qt::Key_Space:
         if(gamePause)   {
@@ -114,6 +115,7 @@ void MainWindow::setUpTimer()
     //start timer
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),player,SLOT(spawnEnemy()));
+    connect(timer,SIGNAL(timeout()),source_of_enemy,SLOT(decreaseNumOfEnemy()));
     timer->start(800);
 }
 
@@ -125,4 +127,10 @@ void MainWindow::setUpGame()
 
     connect(this,SIGNAL(pause()),player,SLOT(onPause()));
     connect(this,SIGNAL(resume()),player,SLOT(onResume()));
+}
+
+void MainWindow::setUpSourceOfEnemy()
+{
+    source_of_enemy = new SourceEnemy(50,this);
+    connect(source_of_enemy,SIGNAL(outOfEnemy()),this,SLOT(stopSpawnEnemy()));
 }
