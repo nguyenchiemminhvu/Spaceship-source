@@ -66,7 +66,7 @@ void Player::shoot()
 {
     if(isPaused == false)   {
 
-        Bullet* bullet = new Bullet();
+        Bullet3* bullet = new Bullet3();
 
         //set the position of bullet center of player character
         bullet->setPos(pos().x() + 20,y());
