@@ -74,6 +74,16 @@ void Enemy::check_collides()
             delete item;
             health->decreaseHealth();
         }
+        else if(typeid(*item) == typeid(Bullet2))   {
+
+            delete item;
+            health->decreaseHealth2();
+        }
+        else if(typeid(*item) == typeid(Bullet3))   {
+
+            delete item;
+            health->decreaseHealth3();
+        }
     }
 }
 

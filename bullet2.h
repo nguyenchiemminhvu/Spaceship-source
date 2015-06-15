@@ -1,24 +1,21 @@
-#ifndef BULLET_H
-#define BULLET_H
+#ifndef BULLET2_H
+#define BULLET2_H
 
 #include <QObject>
-#include <QGraphicsRectItem>
+#include <QGraphicsItem>
 #include <QTimer>
-#include <QPen>
+#include <QGraphicsRectItem>
 #include <QPainter>
-#include <QStyleOptionGraphicsItem>
-#include <typeinfo>
-#include "score.h"
 #include "enemy.h"
+#include "score.h"
 
-class Bullet : public QObject, public QGraphicsRectItem
+class Bullet2 : public QObject, public QGraphicsRectItem
 {
-
     Q_OBJECT
 public:
     enum { oneMove = 10 };
-    explicit Bullet(QGraphicsItem* parent = 0);
-    ~Bullet();
+    explicit Bullet2(QGraphicsItem *parent = 0);
+    ~Bullet2();
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
@@ -27,6 +24,9 @@ signals:
 
 public slots:
     void move();
+
+private:
+    QTimer* timer;
 };
 
-#endif // BULLET_H
+#endif // BULLET2_H

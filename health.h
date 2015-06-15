@@ -19,6 +19,8 @@ signals:
 
 public slots:
     void decreaseHealth(int damage = 1);
+    void decreaseHealth2(int damage = 2);
+    void decreaseHealth3(int damage = 3);
 
 private:
     int health;

@@ -34,3 +34,19 @@ void Health::decreaseHealth(int damage)
     if(health <= 0)
         emit die();
 }
+
+void Health::decreaseHealth2(int damage)
+{
+    health -= damage;
+
+    if(health <= 0)
+        emit die();
+}
+
+void Health::decreaseHealth3(int damage)
+{
+    health -= damage;
+
+    if(health <= 0)
+        emit die();
+}

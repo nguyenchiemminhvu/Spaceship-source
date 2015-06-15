@@ -34,25 +34,6 @@ void Bullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 void Bullet::move()
 {
-    /*
-    //check whether the bullet collides with an enemy, if true -> destroy both
-    QList<QGraphicsItem*> list_item = collidingItems();
-
-    foreach (QGraphicsItem* item, list_item) {
-
-        if(typeid(*item) == typeid(Enemy))  {
-
-            if(this->collidesWithItem(item))    {
-
-                this->deleteLater();
-                delete item;
-                emit shotedAnEnemy();
-                return;
-            }
-        }
-    }
-    */
-
     setPos(x(),y() - oneMove);
 
     //check if the bullet get over the top of scene

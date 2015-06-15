@@ -13,6 +13,8 @@
 #include <QStyleOptionGraphicsItem>
 #include <typeinfo>
 #include "bullet.h"
+#include "bullet2.h"
+#include "bullet3.h"
 #include "health.h"
 
 class Enemy : public QObject, public QGraphicsRectItem

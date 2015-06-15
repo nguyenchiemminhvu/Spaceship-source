@@ -21,7 +21,9 @@ SOURCES += main.cpp\
     graphicsscene.cpp \
     health.cpp \
     emp.cpp \
-    sourceenemy.cpp
+    sourceenemy.cpp \
+    bullet2.cpp \
+    bullet3.cpp
 
 HEADERS  += mainwindow.h \
     bullet.h \
@@ -31,7 +33,9 @@ HEADERS  += mainwindow.h \
     graphicsscene.h \
     health.h \
     emp.h \
-    sourceenemy.h
+    sourceenemy.h \
+    bullet2.h \
+    bullet3.h
 
 FORMS    += mainwindow.ui
 
