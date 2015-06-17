@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     emp.cpp \
     sourceenemy.cpp \
     bullet2.cpp \
-    bullet3.cpp
+    bullet3.cpp \
+    warning.cpp \
+    upgradeweapon.cpp
 
 HEADERS  += mainwindow.h \
     bullet.h \
@@ -35,7 +37,9 @@ HEADERS  += mainwindow.h \
     emp.h \
     sourceenemy.h \
     bullet2.h \
-    bullet3.h
+    bullet3.h \
+    warning.h \
+    upgradeweapon.h
 
 FORMS    += mainwindow.ui
 

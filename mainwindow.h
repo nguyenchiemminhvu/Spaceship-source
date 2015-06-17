@@ -13,6 +13,8 @@
 #include "player.h"
 #include "bullet.h"
 #include "sourceenemy.h"
+#include "warning.h"
+#include "upgradeweapon.h"
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +37,9 @@ signals:
 public slots:
     void continueSpawnEnemy();
     void stopSpawnEnemy();
+    void createWarning();
+    void clearWarning();
+    void createUpgradeWeapon();
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +47,7 @@ private:
     GraphicsScene* scene;
     Player* player;
     SourceEnemy* source_of_enemy;
+    Warning* warning;
 
     bool gamePause;
 

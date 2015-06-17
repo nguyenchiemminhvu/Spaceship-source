@@ -46,12 +46,14 @@ public slots:
     void onPause();
     void onResume();
 
-private:
-    Score* score;
-    QTimer* timer;
+    void LevelUp();
 
-    CountEMP* emp;
-    bool isPaused;
+private:
+    Score*      score;
+    QTimer*     timer;
+
+    CountEMP*   emp;
+    bool        isPaused;
 };
 
 #endif // PLAYER_H

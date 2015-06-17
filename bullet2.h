@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QGraphicsRectItem>
 #include <QPainter>
+#include <typeinfo>
 #include "enemy.h"
 #include "score.h"
 

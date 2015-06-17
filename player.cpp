@@ -126,3 +126,8 @@ void Player::onResume()
     isPaused = false;
     emit resume();
 }
+
+void Player::LevelUp()
+{
+
+}
