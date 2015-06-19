@@ -40,6 +40,7 @@ public slots:
     void createWarning();
     void clearWarning();
     void createUpgradeWeapon();
+    void playerGotKilled();
 
 private:
     Ui::MainWindow *ui;

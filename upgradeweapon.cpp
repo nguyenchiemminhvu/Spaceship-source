@@ -33,6 +33,16 @@ void UpgradeWeapon::move()
         deleteUpgrade();
 }
 
+void UpgradeWeapon::stop()
+{
+    timer->stop();
+}
+
+void UpgradeWeapon::keepMoving()
+{
+    timer->start(90);
+}
+
 void UpgradeWeapon::checkCollides()
 {
     if(collidesWithItem(scene()->focusItem()))  {

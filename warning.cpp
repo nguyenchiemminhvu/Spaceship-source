@@ -26,10 +26,9 @@ void Warning::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
-    painter->setFont(QFont("Time New Roman",20));
-    painter->setPen(QPen(Qt::red,3));
-
     if(state)   {
+        painter->setFont(QFont("Time New Roman",20));
+        painter->setPen(QPen(Qt::red,3));
         painter->drawText(QPointF(100,250),QString("WARNING:"));
         painter->drawText(QPointF(100,300),QString(warning));
     }

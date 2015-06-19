@@ -17,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     setUpView();
     setUpTimer();
     setUpGame();
-
-    createUpgradeWeapon();
 }
 
 MainWindow::~MainWindow()
@@ -70,7 +68,7 @@ void MainWindow::createWarning()
 {
     warning = new Warning("Space Young-Buffalo appear!");
     scene->addItem(warning);
-    QTimer::singleShot(3000,this,SLOT(clearWarning()));
+    QTimer::singleShot(5000,this,SLOT(clearWarning()));
 }
 
 void MainWindow::clearWarning()
@@ -82,8 +80,15 @@ void MainWindow::createUpgradeWeapon()
 {
     UpgradeWeapon* upgrade = new UpgradeWeapon();
 
-    connect(upgrade,SIGNAL(upgrade()),player,SLOT(LevelUp()));
+    connect(this,SIGNAL(pause()),upgrade,SLOT(stop()));
+    connect(this,SIGNAL(resume()),upgrade,SLOT(keepMoving()));
+    connect(upgrade,SIGNAL(upgrade()),player,SLOT(levelUp()));
     scene->addItem(upgrade);
+}
+
+void MainWindow::playerGotKilled()
+{
+    emit pause();
 }
 
 void MainWindow::setUpScene()
@@ -106,6 +111,7 @@ void MainWindow::setUpPlayer()
 
     connect(scene,SIGNAL(lastPosition(QPointF)),player,SLOT(moveToPosition(QPointF)));
     connect(scene,SIGNAL(shoot()),player,SLOT(shoot()));
+    connect(player,SIGNAL(die()),this,SLOT(playerGotKilled()));
 }
 
 void MainWindow::addPlayerToScene()
@@ -155,6 +161,7 @@ void MainWindow::setUpSourceOfEnemy()
 {
     source_of_enemy = new SourceEnemy(10,this);
     connect(source_of_enemy,SIGNAL(outOfEnemy()),this,SLOT(stopSpawnEnemy()));
+    connect(source_of_enemy,SIGNAL(outOfEnemy()),player,SLOT(enemyLevelUp()));
     connect(source_of_enemy,SIGNAL(outOfEnemy()),this,SLOT(createWarning()));
     connect(source_of_enemy,SIGNAL(outOfEnemy()),source_of_enemy,SLOT(deleteLater()));
 }

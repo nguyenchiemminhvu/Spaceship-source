@@ -10,6 +10,8 @@ Player::Player(QGraphicsItem* parent)
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(shoot()));
 
+    level = 1;
+    enemy_level = 1;
     isPaused = false;
 }
 
@@ -66,11 +68,27 @@ void Player::shoot()
 {
     if(isPaused == false)   {
 
-        Bullet3* bullet = new Bullet3();
+        if(level == 1)  {
+            Bullet* bullet = new Bullet();
 
-        //set the position of bullet center of player character
-        bullet->setPos(pos().x() + 20,y());
-        scene()->addItem(bullet);
+            //set the position of bullet center of player character
+            bullet->setPos(pos().x() + 20,y());
+            scene()->addItem(bullet);
+        }
+        else if(level == 2) {
+            Bullet2* bullet = new Bullet2();
+
+            //set the position of bullet center of player character
+            bullet->setPos(pos().x() + 20,y());
+            scene()->addItem(bullet);
+        }
+        else if(level == 3) {
+            Bullet3* bullet = new Bullet3();
+
+            //set the position of bullet center of player character
+            bullet->setPos(pos().x() + 20,y());
+            scene()->addItem(bullet);
+        }
     }
 }
 
@@ -106,13 +124,19 @@ void Player::onEnemyPassTheDefense()
 
 void Player::spawnEnemy()
 {
-    Enemy* son_of_a_bitch = new Enemy(3);
+    Enemy* son_of_a_bitch = new Enemy(enemy_level);
+    connect(son_of_a_bitch,SIGNAL(collidedWithPlayer()),this,SLOT(onCollidesWithEnemy()));
     connect(son_of_a_bitch,SIGNAL(enemyPassTheDefense()),this,SLOT(onEnemyPassTheDefense()));
     connect(son_of_a_bitch,SIGNAL(getScore()),this,SLOT(killAnEnemy()));
     connect(this,SIGNAL(pause()),son_of_a_bitch,SLOT(stopMoving()));
     connect(this,SIGNAL(resume()),son_of_a_bitch,SLOT(keepMoving()));
 
     scene()->addItem(son_of_a_bitch);
+}
+
+void Player::onCollidesWithEnemy()
+{
+    emit die();
 }
 
 void Player::onPause()
@@ -127,7 +151,13 @@ void Player::onResume()
     emit resume();
 }
 
-void Player::LevelUp()
+void Player::levelUp()
 {
+    if(level < 3)
+        level++;
+}
 
+void Player::enemyLevelUp()
+{
+    enemy_level++;
 }

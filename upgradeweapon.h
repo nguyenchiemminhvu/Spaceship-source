@@ -28,6 +28,8 @@ signals:
 
 public slots:
     void move();
+    void stop();
+    void keepMoving();
     void checkCollides();
     void deleteUpgrade();
 

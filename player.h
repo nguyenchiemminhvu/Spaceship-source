@@ -34,6 +34,7 @@ public:
 signals:
     void pause();
     void resume();
+    void die();
 
 public slots:
     void shoot();
@@ -42,15 +43,19 @@ public slots:
     void killAnEnemy();
     void onEnemyPassTheDefense();
     void spawnEnemy();
+    void onCollidesWithEnemy();
 
     void onPause();
     void onResume();
 
-    void LevelUp();
+    void levelUp();
+    void enemyLevelUp();
 
 private:
     Score*      score;
     QTimer*     timer;
+    int         level;
+    int         enemy_level;
 
     CountEMP*   emp;
     bool        isPaused;
