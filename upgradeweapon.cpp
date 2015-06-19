@@ -50,18 +50,6 @@ void UpgradeWeapon::checkCollides()
         deleteUpgrade();
         emit upgrade();
     }
-    else    {
-        QList<QGraphicsItem*> list_item = collidingItems();
-
-        foreach (QGraphicsItem* item, list_item) {
-
-            if(typeid(*item) == typeid(Bullet) || typeid(*item) == typeid(Bullet2) || typeid(*item) == typeid(Bullet3)) {
-
-                delete item;
-                deleteUpgrade();
-            }
-        }
-    }
 }
 
 void UpgradeWeapon::deleteUpgrade()

@@ -8,7 +8,6 @@ SourceEnemy::SourceEnemy(int num, QObject *parent)
 
 SourceEnemy::~SourceEnemy()
 {
-    this->deleteLater();
 }
 
 void SourceEnemy::decreaseNumOfEnemy()
@@ -21,5 +20,10 @@ void SourceEnemy::decreaseNumOfEnemy()
     {
         emit outOfEnemy();
     }
+}
+
+void SourceEnemy::setNewSource()
+{
+    num_of_enemy = 10;
 }
 

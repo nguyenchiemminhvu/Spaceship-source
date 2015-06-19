@@ -125,18 +125,13 @@ void Player::onEnemyPassTheDefense()
 void Player::spawnEnemy()
 {
     Enemy* son_of_a_bitch = new Enemy(enemy_level);
-    connect(son_of_a_bitch,SIGNAL(collidedWithPlayer()),this,SLOT(onCollidesWithEnemy()));
+
     connect(son_of_a_bitch,SIGNAL(enemyPassTheDefense()),this,SLOT(onEnemyPassTheDefense()));
     connect(son_of_a_bitch,SIGNAL(getScore()),this,SLOT(killAnEnemy()));
     connect(this,SIGNAL(pause()),son_of_a_bitch,SLOT(stopMoving()));
     connect(this,SIGNAL(resume()),son_of_a_bitch,SLOT(keepMoving()));
 
     scene()->addItem(son_of_a_bitch);
-}
-
-void Player::onCollidesWithEnemy()
-{
-    emit die();
 }
 
 void Player::onPause()
@@ -155,6 +150,8 @@ void Player::levelUp()
 {
     if(level < 3)
         level++;
+    else
+        score->increaseScore(50);
 }
 
 void Player::enemyLevelUp()

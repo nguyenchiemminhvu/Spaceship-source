@@ -15,6 +15,7 @@ signals:
 
 public slots:
     void decreaseNumOfEnemy();
+    void setNewSource();
 
 private:
     int num_of_enemy;
