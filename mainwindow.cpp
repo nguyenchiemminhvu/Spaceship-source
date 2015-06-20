@@ -10,14 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(ui->graphicsView);
     move(mapToGlobal(QPoint(300,50)));
 
-    //a few utility function using for initialize the game
-    setUpScene();
-    setUpPlayer();
-    setUpSourceOfEnemy();
-    addPlayerToScene();
-    setUpView();
-    setUpTimer();
-    setUpGame();
+    playing();
 }
 
 MainWindow::~MainWindow()
@@ -51,6 +44,24 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     default:
         break;
     }
+}
+
+void MainWindow::playing()
+{
+    //a few utility function using for initialize the game
+    setUpScene();
+    setUpPlayer();
+    setUpSourceOfEnemy();
+    addPlayerToScene();
+    setUpView();
+    setUpTimer();
+    setUpGame();
+}
+
+void MainWindow::endGame()
+{
+    emit pause();
+    QTimer::singleShot(3000,this,SLOT(close()));
 }
 
 void MainWindow::continueSpawnEnemy()
@@ -110,6 +121,7 @@ void MainWindow::setUpPlayer()
 
     connect(scene,SIGNAL(lastPosition(QPointF)),player,SLOT(moveToPosition(QPointF)));
     connect(scene,SIGNAL(shoot()),player,SLOT(shoot()));
+    connect(player,SIGNAL(endGame()),this,SLOT(endGame()));
 }
 
 void MainWindow::addPlayerToScene()
@@ -157,7 +169,7 @@ void MainWindow::setUpGame()
 
 void MainWindow::setUpSourceOfEnemy()
 {
-    source_of_enemy = new SourceEnemy(10,this);
+    source_of_enemy = new SourceEnemy(20,this);
     connect(source_of_enemy,SIGNAL(outOfEnemy()),source_of_enemy,SLOT(setNewSource()));
     connect(source_of_enemy,SIGNAL(outOfEnemy()),this,SLOT(createUpgradeWeapon()));
     connect(source_of_enemy,SIGNAL(outOfEnemy()),this,SLOT(stopSpawnEnemy()));

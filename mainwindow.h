@@ -35,6 +35,9 @@ signals:
     void resume();
 
 public slots:
+    void playing();
+    void endGame();
+
     void continueSpawnEnemy();
     void stopSpawnEnemy();
     void createWarning();

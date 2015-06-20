@@ -62,7 +62,7 @@ CountEMP::CountEMP(QGraphicsItem *parent)
     timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(increaseEMP()));
 
-    timer->start(20000);
+    timer->start(10000);
 }
 
 CountEMP::~CountEMP()

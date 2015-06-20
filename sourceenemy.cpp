@@ -24,6 +24,6 @@ void SourceEnemy::decreaseNumOfEnemy()
 
 void SourceEnemy::setNewSource()
 {
-    num_of_enemy = 10;
+    num_of_enemy = 20;
 }
 

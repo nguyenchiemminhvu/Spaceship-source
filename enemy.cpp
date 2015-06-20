@@ -46,9 +46,8 @@ void Enemy::move()
     //check if enemy collides with player
     if(collidesWithItem(scene()->focusItem()))
     {
-        destroyEnemy();
-        delete scene()->focusItem();
         emit collidedWithPlayer();
+        //delete scene()->focusItem(); //get error when collided
         return;
     }
 

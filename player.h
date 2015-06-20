@@ -34,6 +34,7 @@ public:
 signals:
     void pause();
     void resume();
+    void endGame();
 
 public slots:
     void shoot();
@@ -42,6 +43,7 @@ public slots:
     void killAnEnemy();
     void onEnemyPassTheDefense();
     void spawnEnemy();
+    void onCollidedWithEnemy();
 
     void onPause();
     void onResume();
