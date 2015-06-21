@@ -29,7 +29,7 @@ void Warning::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     if(state)   {
         painter->setFont(QFont("Time New Roman",20));
         painter->setPen(QPen(Qt::red,3));
-        painter->drawText(QPointF(200,300),QString(warning));
+        painter->drawText(QPointF(180,300),QString(warning));
     }
 }
 
