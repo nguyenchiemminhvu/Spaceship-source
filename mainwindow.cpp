@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("Space ship - Written by Nguyen Chiem Minh Vu");
     setCentralWidget(ui->graphicsView);
     move(mapToGlobal(QPoint(300,50)));
+    setUpMusicBackground();
 
     playing();
 }
@@ -99,6 +100,14 @@ void MainWindow::createUpgradeWeapon()
     connect(this,SIGNAL(resume()),upgrade,SLOT(keepMoving()));
     connect(upgrade,SIGNAL(upgrade()),player,SLOT(levelUp()));
     scene->addItem(upgrade);
+}
+
+void MainWindow::setUpMusicBackground()
+{
+    music = new QMediaPlayer(this);
+    music->setMedia(QUrl::fromLocalFile(QDir::currentPath() + "/sound/Frontier.mp3"));
+    music->setVolume(80);
+    music->play();
 }
 
 void MainWindow::setUpScene()

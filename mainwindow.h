@@ -9,6 +9,8 @@
 #include <QGraphicsTextItem>
 #include <QTextDocument>
 #include <QTimer>
+#include <QMediaPlayer>
+#include <QDir>
 #include "graphicsscene.h"
 #include "player.h"
 #include "bullet.h"
@@ -51,9 +53,11 @@ private:
     Player* player;
     SourceEnemy* source_of_enemy;
     Warning* warning;
+    QMediaPlayer* music;
 
     bool gamePause;
 
+    void setUpMusicBackground();
     void setUpScene();
     void setUpPlayer();
     void addPlayerToScene();
